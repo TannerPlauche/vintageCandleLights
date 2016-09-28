@@ -186,13 +186,13 @@ $(document).ready(function () {
         backgrounds: [
 
             {
-                src: './img/backgrounds/candle1.jpg',
+                src: './img/backgrounds/candle1.JPG',
                 fade: 1000
             }, {
-                src: './img/backgrounds/candle2.jpg',
+                src: './img/backgrounds/candle2.JPG',
                 fade: 1000
             }, {
-                src: './img/backgrounds/candle3.jpg',
+                src: './img/backgrounds/candle3.JPG',
                 fade: 1000
             }
         ]
