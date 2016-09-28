@@ -1,12 +1,11 @@
+$(document).ready(function () {
 
-$(document).ready(function(){
+
+    /* ==========================================================================
+       Preload
+    ========================================================================== */
 
 
-/* ==========================================================================
-   Preload
-========================================================================== */
-    
-    
     $("html").queryLoader2({
         barColor: "#111",
         backgroundColor: "#fff",
@@ -18,18 +17,20 @@ $(document).ready(function(){
 
     $("body").fadeIn('slow')
 
-/* ==========================================================================
-   Scroll about page
-========================================================================== */
-$(".learn-more").click(function(event){     
+    /* ==========================================================================
+       Scroll about page
+    ========================================================================== */
+    $(".learn-more").click(function (event) {
         event.preventDefault();
-        $('html,body').animate({scrollTop:$(this.hash).offset().top}, 1000);
+        $('html,body').animate({
+            scrollTop: $(this.hash).offset().top
+        }, 1000);
     });
-    
 
-/* ==========================================================================
-   For Bootstrap current state on portfolio sorting
-========================================================================== */
+
+    /* ==========================================================================
+       For Bootstrap current state on portfolio sorting
+    ========================================================================== */
 
 
     $('ul.nav-pills li a').click(function (e) {
@@ -38,126 +39,132 @@ $(".learn-more").click(function(event){
     })
 
 
-/* ==========================================================================
-  Parallax
-========================================================================== */
+    /* ==========================================================================
+      Parallax
+    ========================================================================== */
 
     $('#parallax-quote').parallax("50%", 0.8);
     $('#parallax-connect').parallax("50%", 0.8);
     $('.parallax-content').parallax("50%", 0.3);
 
 
- 
-/* ==========================================================================
-  Flex Slider
-========================================================================== */ 
-    
-      $('.flexslider').flexslider({
+
+    /* ==========================================================================
+      Flex Slider
+    ========================================================================== */
+
+    $('.flexslider').flexslider({
         animation: "slide",
         selector: ".home-slides > li",
         controlNav: true,
-        directionNav: false ,
+        directionNav: false,
         direction: "vertical"
-      });
-
- 
-/* ==========================================================================
-  Google Maps
-========================================================================== */ 
- $('.gmap').each(function(index, element) {
-    var gmap = $(element);
-    var addr = 'http://maps.google.com/maps?hl=en&ie=utf8&output=embed&sensor=false&iwd=1&mrt=loc&t=m&q=' + encodeURIComponent(gmap.attr('data-address'));
-    addr += '&z=' + gmap.attr('data-zoom');
-    if (gmap.attr('data-bubble') == 'true') {
-      addr += '&iwloc=addr';
-    } else {
-      addr += '&iwloc=near';
-    }
-    gmap.attr('src', addr);
-  });    
-
-/* ==========================================================================
-  Portfolio sorting 
-========================================================================== */
-
-  $(window).load(function(){
-    var $container = $('.grid-wrapper');
-    $container.isotope({
-        filter: '*',
-        animationOptions: {
-            duration: 750,
-            easing: 'linear',
-            queue: false
-        }
     });
- 
-    $('.grid-controls li a').click(function(){
-        $('.grid-controls .current').removeClass('current');
-        $(this).addClass('current');
- 
-        var selector = $(this).attr('data-filter');
+
+
+    /* ==========================================================================
+      Google Maps
+    ========================================================================== */
+    $('.gmap').each(function (index, element) {
+        var gmap = $(element);
+        var addr = 'http://maps.google.com/maps?hl=en&ie=utf8&output=embed&sensor=false&iwd=1&mrt=loc&t=m&q=' + encodeURIComponent(gmap.attr('data-address'));
+        addr += '&z=' + gmap.attr('data-zoom');
+        if (gmap.attr('data-bubble') == 'true') {
+            addr += '&iwloc=addr';
+        } else {
+            addr += '&iwloc=near';
+        }
+        gmap.attr('src', addr);
+    });
+
+    /* ==========================================================================
+      Portfolio sorting 
+    ========================================================================== */
+
+    $(window).load(function () {
+        var $container = $('.grid-wrapper');
         $container.isotope({
-            filter: selector,
+            filter: '*',
             animationOptions: {
                 duration: 750,
                 easing: 'linear',
                 queue: false
             }
-         });
-         return false;
-    });
-});
+        });
 
+        $('.grid-controls li a').click(function () {
+            $('.grid-controls .current').removeClass('current');
+            $(this).addClass('current');
 
-     $('.mix a').hover(
-               function(){ 
-                         $(this).find('.overlay').stop().slideDown(500);
-                         return false;
-               },
-               function(){
-                         $(this).find('.overlay').stop().slideUp(500);
-                         return false;
-               }
-     );
-
-
-
-/* ==========================================================================
-  Team
-========================================================================== */
-
-  $(".team-footer").mouseenter(function() {
-            $(".follow", this).stop().animate({top:70},'fast');
-            $(".follow", this).next().fadeIn()
-    });
-
-    $(".team-footer").mouseleave(function() {
-            $(".follow", this).stop().animate({top:0},'fast');
-            $(".follow", this).next().fadeOut()
-
+            var selector = $(this).attr('data-filter');
+            $container.isotope({
+                filter: selector,
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
+                    queue: false
+                }
+            });
+            return false;
+        });
     });
 
 
-/* ==========================================================================
-  Magnific Popup
-========================================================================== */
-/*  */
-$('.grid-wrapper').magnificPopup({
-      delegate: 'a', 
-      type: 'image',
-      gallery:{
-      enabled:true
-      }
+    $('.mix a').hover(
+        function () {
+            $(this).find('.overlay').stop().slideDown(500);
+            return false;
+        },
+        function () {
+            $(this).find('.overlay').stop().slideUp(500);
+            return false;
+        }
+    );
+
+
+
+    /* ==========================================================================
+      Team
+    ========================================================================== */
+
+    $(".team-footer").mouseenter(function () {
+        $(".follow", this).stop().animate({
+            top: 70
+        }, 'fast');
+        $(".follow", this).next().fadeIn()
     });
 
-/* ==========================================================================
- Sticky menu
-========================================================================== */
-$(".navbar").sticky({topSpacing: 0});
+    $(".team-footer").mouseleave(function () {
+        $(".follow", this).stop().animate({
+            top: 0
+        }, 'fast');
+        $(".follow", this).next().fadeOut()
 
-/* ==========================================================================
- Scroll spy and scroll filter
-========================================================================== */
+    });
+
+
+    /* ==========================================================================
+      Magnific Popup
+    ========================================================================== */
+    /*  */
+    $('.grid-wrapper').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        gallery: {
+            enabled: true
+        }
+    });
+
+    /* ==========================================================================
+     Sticky menu
+    ========================================================================== */
+    $(".navbar").sticky({
+        topSpacing: 0
+    });
+
+    /* ==========================================================================
+     Scroll spy and scroll filter
+    ========================================================================== */
 
     $('#main-menu').onePageNav({
         currentClass: "active",
@@ -165,38 +172,45 @@ $(".navbar").sticky({topSpacing: 0});
         scrollThreshold: 0.5,
         scrollSpeed: 750,
         filter: "",
-        easing: "swing" 
-     });
+        easing: "swing"
+    });
 
 
 
-/*==========================================================================
-VEGAS Home Slider
-========================================================================== */   
+    /*==========================================================================
+    VEGAS Home Slider
+    ========================================================================== */
 
-  
+
     $.vegas('slideshow', {
-        backgrounds:[
-        
-        { src:'img/backgrounds/candle1.jpg', fade:1000 },
-        { src:'img/backgrounds/candle2.jpg', fade:1000 },
-        { src:'img/backgrounds/candle3.jpg', fade:1000 }
+        backgrounds: [
+
+            {
+                src: './img/backgrounds/candle1.jpg',
+                fade: 1000
+            }, {
+                src: './img/backgrounds/candle2.jpg',
+                fade: 1000
+            }, {
+                src: './img/backgrounds/candle3.jpg',
+                fade: 1000
+            }
         ]
-      })('overlay', {
-        src:'img/overlays/16.png'
-      });
-      $( "#vegas-next" ).click(function() {
+    })('overlay', {
+        src: 'img/overlays/16.png'
+    });
+    $("#vegas-next").click(function () {
         $.vegas('next');
-      });
-      $( "#vegas-prev" ).click(function() {
+    });
+    $("#vegas-prev").click(function () {
         $.vegas('previous');
     });
 
-/*==========================================================================
-Contact form 
-========================================================================== */  
+    /*==========================================================================
+    Contact form 
+    ========================================================================== */
 
-      $('#contact-form').validate({
+    $('#contact-form').validate({
         rules: {
             name: {
                 minlength: 2,
@@ -220,17 +234,17 @@ Contact form
         }
     });
 
-/*==========================================================================
-Count to timer
-========================================================================== */ 
+    /*==========================================================================
+    Count to timer
+    ========================================================================== */
 
- $('.counter').waypoint(function() {
-    $(this).countTo();
-     }, {
-     triggerOnce: true,
-     offset: 'bottom-in-view'
-});       
-         
-                   
+    $('.counter').waypoint(function () {
+        $(this).countTo();
+    }, {
+        triggerOnce: true,
+        offset: 'bottom-in-view'
+    });
+
+
 
 });
